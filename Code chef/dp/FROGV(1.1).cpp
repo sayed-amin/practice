@@ -8,9 +8,6 @@ first dp
 using namespace std;
 #define int long long
 #define endl "\n"
-void make(int n)
-{
-}
 void solve()
 {
     int n, k, p;
