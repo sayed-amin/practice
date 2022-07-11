@@ -10,7 +10,6 @@ bool isvalid(int x, int y)
 }
 void solve()
 {
-    cout << gcd(2, 3);
     int col, row, k;
     cin >> row >> col >> k;
     queue<pair<int, int>> q;

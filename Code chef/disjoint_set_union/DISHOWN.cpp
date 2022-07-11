@@ -20,7 +20,7 @@ void Union(int x, int y)
     {
         if (s[x] < s[y])
             a[x] = a[y];
-        else
+        else if (s[y] < s[x])
             a[y] = a[x];
     }
 }
@@ -50,7 +50,7 @@ void solve()
             int ans = find(x);
             cout << ans << endl;
         }
-        else if (t == 0)
+        else
         {
             int x, y;
             cin >> x >> y;

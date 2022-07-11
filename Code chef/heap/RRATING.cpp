@@ -1,68 +1,61 @@
-//
+/*
+RRATING.cpp
+04 July 2022
+Mon 12:33
 
+*/
 #include <bits/stdc++.h>
 using namespace std;
-const int max_char = 26;
-struct KEY
-{
-    /* data */
-    int frequency;
-    char ch;
-    bool operator<(const KEY &k) const
-    {
-        return frequency < k.frequency;
-    }
-};
-
-class Solution
-{
-public:
-    string reorganizeString(string s)
-    {
-        int n = s.size();
-        vector<int> count(max_char, 0);
-        for (int i = 0; i < n; i++)
-        {
-            count[s[i] - 'a']++;
-        }
-        priority_queue<KEY> p;
-        for (char i = 'a'; i <= 'z'; i++)
-        {
-            int val = i - 'a';
-            if (count[val])
-            {
-                p.push({count[val], i});
-            }
-        }
-        s = "";
-        KEY prev({-1, '#'});
-
-        while (!p.empty())
-        {
-            KEY k = p.top();
-            p.pop();
-            s = s + k.ch;
-            if (prev.frequency > 0)
-                p.push(prev);
-            (k.frequency)--;
-
-            prev = k;
-        }
-        if (n != s.length())
-            return "";
-        return s;
-    }
-};
+#define int long long
+#define endl "\n"
 void solve()
 {
+    int n;
+    cin >> n;
+    multiset<int> s;
+    while (n--)
+    {
+        int x;
+        cin >> x;
+        if (x == 1)
+        {
+            int a;
+            cin >> a;
+            s.insert(a);
+        }
+        else
+        {
+            int siz = s.size();
+            siz = siz / 3;
+            //  cout << siz << endl;
+            if (siz != 0)
+            {
+                auto pos = s.end();
+                // pos--;
+
+                while (siz != 0)
+                {
+                    --pos;
+                    // cout << *pos << " ";
+                    --siz;
+                }
+                //  cout << endl;
+                cout << *pos << endl;
+            }
+            else
+                cout << "No reviews yet" << endl;
+        }
+    }
+    // for (auto i : s)
+    //     cout << i << " ";
 }
 int32_t main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    int t;
-    cin >> t;
+    int t = 1;
+    // cin >> t;
     while (t--)
     {
         solve();
