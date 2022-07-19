@@ -1,7 +1,7 @@
 /*
-segment_tree_for_sum.cpp
-11 July 2022
-Mon 07:38
+segement_tree_first_element_atleast_x.cpp
+15 July 2022
+Fri 19:41
 
 */
 #include <bits/stdc++.h>
@@ -13,19 +13,23 @@ int tree[4 * N], a[N];
 void build(int node, int start, int end)
 {
     if (start == end)
+    {
         tree[node] = a[start];
+    }
     else
     {
         int mid = (start + end) / 2;
         build(2 * node, start, mid);
         build(2 * node + 1, mid + 1, end);
-        tree[node] = tree[2 * node] + tree[2 * node + 1];
+        tree[node] = max(tree[2 * node], tree[2 * node + 1]);
     }
 }
 void update(int node, int start, int end, int pos, int value)
 {
     if (start == end)
+    {
         tree[node] = value;
+    }
     else
     {
         int mid = (start + end) / 2;
@@ -33,19 +37,21 @@ void update(int node, int start, int end, int pos, int value)
             update(2 * node, start, mid, pos, value);
         else
             update(2 * node + 1, mid + 1, end, pos, value);
-        tree[node] = tree[2 * node] + tree[2 * node + 1];
+        tree[node] = max(tree[node * 2], tree[2 * node + 1]);
     }
 }
-int get(int v, int tl, int tr, int pos)
+int querey_max(int node, int start, int end, int l, int r)
 {
-    if (tl == tr)
-        return t[v];
-    int tm = (tl + tr) / 2;
-    if (pos <= tm)
-        return t[v] + get(v * 2, tl, tm, pos);
-    else
-        return t[v] + get(v * 2 + 1, tm + 1, tr, pos);
+    if (start > r || end < l)
+        return -1e15;
+    if (l <= start and end <= r)
+        return tree[node];
+    int mid = (start + end) / 2;
+    int q1 = querey_max(2 * node, start, mid, l, r);
+    int q2 = querey_max(2 * node + 1, mid + 1, end, l, r);
+    return max(q1, q2);
 }
+
 void solve()
 {
     int n, m;
@@ -65,11 +71,24 @@ void solve()
         }
         else
         {
-            int l, r;
-            cin >> l >> r;
-            int s = query_sum(1, 0, n - 1, l, r - 1);
-            cout << s << endl;
-            ;
+            int l;
+            cin >> l;
+            int low = 0, high = n - 1, ans = n;
+            while (low <= high)
+            {
+                int mid = (low + high) / 2;
+                if (querey_max(1, 0, n - 1, low, mid) < l)
+                    low = mid + 1;
+                else
+                {
+                    high = mid - 1;
+                    ans = min(ans, mid);
+                }
+            }
+            if (ans == n)
+                cout << -1 << endl;
+            else
+                cout << ans << endl;
         }
     }
 }

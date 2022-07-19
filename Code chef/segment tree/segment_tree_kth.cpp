@@ -22,30 +22,42 @@ void build(int node, int start, int end)
         tree[node] = tree[2 * node] + tree[2 * node + 1];
     }
 }
-void update(int node, int start, int end, int pos, int value)
+void update(int node, int start, int end, int pos)
 {
     if (start == end)
-        tree[node] = value;
+    {
+        if (a[start] == 0)
+        {
+            a[start] = 1;
+            tree[node] = 1;
+        }
+        else
+        {
+            a[start] = 0;
+            tree[node] = 0;
+        }
+    }
     else
     {
         int mid = (start + end) / 2;
         if (pos <= mid)
-            update(2 * node, start, mid, pos, value);
+            update(2 * node, start, mid, pos);
         else
-            update(2 * node + 1, mid + 1, end, pos, value);
+            update(2 * node + 1, mid + 1, end, pos);
         tree[node] = tree[2 * node] + tree[2 * node + 1];
     }
 }
-int get(int v, int tl, int tr, int pos)
+int find_kth(int node, int start, int end, int k)
 {
-    if (tl == tr)
-        return t[v];
-    int tm = (tl + tr) / 2;
-    if (pos <= tm)
-        return t[v] + get(v * 2, tl, tm, pos);
+    if (start == end)
+        return start;
+    int mid = (start + end) / 2;
+    if (k < tree[2 * node])
+        return find_kth(2 * node, start, mid, k);
     else
-        return t[v] + get(v * 2 + 1, tm + 1, tr, pos);
+        return find_kth(2 * node + 1, mid + 1, end, k - tree[2 * node]);
 }
+
 void solve()
 {
     int n, m;
@@ -59,17 +71,16 @@ void solve()
         cin >> x;
         if (x == 1)
         {
-            int pos, value;
-            cin >> pos >> value;
-            update(1, 0, n - 1, pos, value);
+            int pos;
+            cin >> pos;
+
+            update(1, 0, n - 1, pos);
         }
         else
         {
-            int l, r;
-            cin >> l >> r;
-            int s = query_sum(1, 0, n - 1, l, r - 1);
-            cout << s << endl;
-            ;
+            int kth;
+            cin >> kth;
+            cout << find_kth(1, 0, n - 1, kth) << endl;
         }
     }
 }

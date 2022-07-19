@@ -43,7 +43,7 @@ void update(int node, int start, int end, int pos, int value)
     }
     else
     {
-        int mid = (start + mid) / 2;
+        int mid = (start + end) / 2;
         if (pos <= mid)
             update(2 * node, start, mid, pos, value);
         else

@@ -1,15 +1,29 @@
 /*
-segment_tree_for_sum.cpp
-11 July 2022
-Mon 07:38
-
+bit.cpp
+18 July 2022
+Mon 12:39
+segment tree
 */
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
 #define endl "\n"
-const int N = 1e5 + 10;
-int tree[4 * N], a[N];
+
+long long binpow(long long a, long long b)
+{
+    long long res = 1;
+    while (b > 0)
+    {
+        if (b & 1)
+            res = res * a;
+        a = a * a;
+        b >>= 1;
+    }
+    return res;
+}
+const int N = 1e6 + 10;
+int tree[N], a[N];
+
 void build(int node, int start, int end)
 {
     if (start == end)
@@ -19,7 +33,11 @@ void build(int node, int start, int end)
         int mid = (start + end) / 2;
         build(2 * node, start, mid);
         build(2 * node + 1, mid + 1, end);
-        tree[node] = tree[2 * node] + tree[2 * node + 1];
+        int t = log2(end - start + 1);
+        if (t & 1)
+            tree[node] = (tree[2 * node] | tree[2 * node + 1]);
+        else
+            tree[node] = (tree[2 * node] ^ tree[2 * node + 1]);
     }
 }
 void update(int node, int start, int end, int pos, int value)
@@ -30,47 +48,35 @@ void update(int node, int start, int end, int pos, int value)
     {
         int mid = (start + end) / 2;
         if (pos <= mid)
+        {
             update(2 * node, start, mid, pos, value);
+        }
         else
+        {
             update(2 * node + 1, mid + 1, end, pos, value);
-        tree[node] = tree[2 * node] + tree[2 * node + 1];
+        }
+        int t = log2(end - start + 1);
+        if (t & 1)
+            tree[node] = tree[2 * node] | tree[2 * node + 1];
+        else
+            tree[node] = tree[2 * node] ^ tree[2 * node + 1];
     }
-}
-int get(int v, int tl, int tr, int pos)
-{
-    if (tl == tr)
-        return t[v];
-    int tm = (tl + tr) / 2;
-    if (pos <= tm)
-        return t[v] + get(v * 2, tl, tm, pos);
-    else
-        return t[v] + get(v * 2 + 1, tm + 1, tr, pos);
 }
 void solve()
 {
     int n, m;
     cin >> n >> m;
+    n = binpow(2, n);
     for (int i = 0; i < n; i++)
         cin >> a[i];
     build(1, 0, n - 1);
     while (m--)
     {
-        int x;
-        cin >> x;
-        if (x == 1)
-        {
-            int pos, value;
-            cin >> pos >> value;
-            update(1, 0, n - 1, pos, value);
-        }
-        else
-        {
-            int l, r;
-            cin >> l >> r;
-            int s = query_sum(1, 0, n - 1, l, r - 1);
-            cout << s << endl;
-            ;
-        }
+        int pos, value;
+        cin >> pos >> value;
+        pos--;
+        update(1, 0, n - 1, pos, value);
+        cout << tree[1] << endl;
     }
 }
 int32_t main()

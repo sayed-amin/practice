@@ -1,29 +1,24 @@
 /*
-temp.cpp
-10 July 2022
-Sun 20:16
+nested_segment.cpp
+16 July 2022
+Sat 23:10
 
 */
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
 #define endl "\n"
+const int N = 2e5 + 10, MOD = 1e9 + 7;
+struct triplet
+{
+    int l, r, index;
+};
+bool cmp(triplet t1, triplet t2)
+{
+    return t1.r < t2.r;
+}
 const int N = 1e5 + 10;
 int tree[4 * N], a[N];
-void build(int node, int start, int end)
-{
-    if (start == end)
-    {
-        tree[node] = a[start];
-    }
-    else
-    {
-        int mid = (start + end) / 2;
-        build(2 * node, start, mid);
-        build(2 * node, mid + 1, end);
-        tree[node] = tree[2 * node] + tree[2 * node + 1];
-    }
-}
 int query_sum(int node, int start, int end, int l, int r)
 {
     //  l.....r start  // end l.....r
@@ -54,22 +49,29 @@ void update(int node, int start, int end, int pos, int value)
         tree[node] = tree[2 * node] + tree[2 * node + 1];
     }
 }
-
-long long binpow(long long a, long long b)
-{
-    long long res = 1;
-    while (b > 0)
-    {
-        if (b & 1)
-            res = res * a;
-        a = a * a;
-        b >>= 1;
-    }
-    return res;
-}
 void solve()
 {
-    cout << binpow(10, 5);
+    int n;
+    cin >> n;
+    triplet t1;
+    t1.l = -1, t1.r = -1;
+    vector<triplet> t(n, t1);
+
+    for (int i = 0; i < 2 * n; i++)
+    {
+        int x;
+        cin >> x;
+        if (t[x].l == -1)
+        {
+            t[x].l = i;
+        }
+        else
+        {
+            t[x].r = i;
+        }
+        t[x - 1].index = x;
+    }
+    sort(t.begin(), t.end(), cmp);
 }
 int32_t main()
 {
@@ -77,7 +79,7 @@ int32_t main()
     cin.tie(0);
     cout.tie(0);
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--)
     {
         solve();
