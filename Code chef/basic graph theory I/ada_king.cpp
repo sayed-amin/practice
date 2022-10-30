@@ -6,7 +6,7 @@ bool isvalid(int x, int y)
 {
     if (x <= 0 || y <= 0 || x > 8 || y > 8)
         return false;
-    return true;
+    return true
 }
 void solve()
 {
