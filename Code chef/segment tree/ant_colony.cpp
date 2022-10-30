@@ -41,7 +41,7 @@ void update(int node, int start, int end, int l, int r)
         return;
     if (l == start && r == end)
     {
-        t[v] += add;
+        tree[v] += add;
     }
     else
     {
