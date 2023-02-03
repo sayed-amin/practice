@@ -40,6 +40,32 @@ void solve()
             cout << gcd(pre[l - 1], suff[r + 1]) << endl;
     }
 }
+void solve2()
+{
+    int n, q;
+    cin >> n >> q;
+    int a[n + 10];
+    for (int i = 1; i <= n; i++)
+        cin >> a[i];
+    int suff[n + 10], pre[n + 10];
+    pre[0] = 0;
+    suff[n + 1] = 0;
+    for (int i = 1; i < n; i++)
+    {
+        pre[i] = gcd(pre[i - 1], a[i]);
+    }
+    for (int i = n; i >= 1; i--)
+    {
+        suff[i] = gcd(suff[i + 1], a[i]);
+    }
+    while (q--)
+    {
+        int l, r;
+        cin >> l >> r;
+
+        cout << gcd(pre[l - 1], suff[r + 1]) << endl;
+    }
+}
 int32_t main()
 {
     ios_base::sync_with_stdio(0);
@@ -49,7 +75,7 @@ int32_t main()
     cin >> t;
     while (t--)
     {
-        solve();
+        solve2();
     }
     return 0;
 }
