@@ -9,6 +9,16 @@ using namespace std;
 #define int long long
 #define endl "\n"
 const int MOD;
+int binRecurr(int a, int b)
+{
+    if (b == 0)
+        return 1;
+    int res = binRecurr(a, b / 2);
+    if (b & 1)
+        return a * res * res;
+    else
+        return res * res;
+}
 int binexpiterative(int a, int b)
 {
     int ans = 1;

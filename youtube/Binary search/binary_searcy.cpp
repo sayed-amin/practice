@@ -3,6 +3,7 @@ binary_searcy.cpp
 24 August 2022
 Wed 06:07
 basic code of binary search
+line to the question:
 */
 #include <bits/stdc++.h>
 using namespace std;

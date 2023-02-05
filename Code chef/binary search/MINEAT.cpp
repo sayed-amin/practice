@@ -1,4 +1,4 @@
-//
+// https://www.codechef.com/problems/MINEAT?tab=statement
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
@@ -13,6 +13,35 @@ bool can_eat(int min_time)
         hours_ct += ((Piles[i] + min_time - 1) / (min_time * 1.0));
     }
     return hours_ct <= hours;
+}
+void solve2()
+{
+    cin >> n;
+    cin >> hours;
+    int mx_hours = -1;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> Piles[i];
+        mx_hours = max(mx_hours, Piles[i]);
+    }
+    int low = 1, high = mx_hours, mid;
+    int ans = mx_hours;
+
+    while (high - low > 1)
+    {
+        mid = (high + low) / 2;
+        if (can_eat(mid))
+        {
+
+            high = mid;
+        }
+        else
+            low = mid + 1;
+    }
+    if (can_eat(low))
+        cout << low << endl;
+    else
+        cout << high << endl;
 }
 void solve()
 {
@@ -50,7 +79,7 @@ int32_t main()
     cin >> t;
     while (t--)
     {
-        solve();
+        solve2();
     }
     return 0;
 }
