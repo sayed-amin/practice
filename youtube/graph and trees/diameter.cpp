@@ -13,14 +13,26 @@ vector<int> g[N];
 int depth[N], height[N], subtree_sum[N], even[N];
 void dfs(int v, int par = -1)
 {
+    /*
+          Take action on vertex after entering the vertex
+     */
 
     for (auto child : g[v])
     {
         if (child == par)
             continue;
+        /*
+          Take action on child before entering the child node
+        */
         depth[child] = depth[v] + 1;
         dfs(child, v);
+        /*
+         Take action on child after existing the child node
+        */
     }
+    /*
+      Take action on vertex before exiting the vertex
+    */
 }
 void solve()
 {

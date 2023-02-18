@@ -1,8 +1,8 @@
 /*
-precomputation_tree.cpp
+tree_height_depth.cpp
 29 June 2022
-Wed 07:07
-
+Wed 06:49
+https://www.youtube.com/watch?v=i_FktdKVXDc&list=PLauivoElc3ghxyYSr_sVnDUc_ynPk6iXE&index=7
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -10,22 +10,30 @@ using namespace std;
 #define endl "\n"
 const int N = 1e5;
 vector<int> g[N];
-int depth[N], height[N], subtree_sum[N], even[N];
+int depth[N], height[N];
 void dfs(int v, int par = -1)
 {
-    if (v % 2 == 0)
-        even[v] += v;
-    subtree_sum[v] += v;
+    /*
+          Take action on vertex after entering the vertex
+     */
+
     for (auto child : g[v])
     {
         if (child == par)
             continue;
+        /*
+          Take action on child before entering the child node
+        */
         depth[child] = depth[v] + 1;
         dfs(child, v);
         height[v] = max(height[child] + 1, height[v]);
-        subtree_sum[v] += subtree_sum[child];
-        even[v] += even[child];
+        /*
+          Take action on child after existing the child node
+        */
     }
+    /*
+       Take action on vertex before exiting the vertex
+     */
 }
 void solve()
 {

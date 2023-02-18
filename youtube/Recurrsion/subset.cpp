@@ -9,6 +9,20 @@ using recurrion
 using namespace std;
 #define int long long
 #define endl "\n"
+// sub(int a[],int pos)
+vector<vector<int>> subsets;
+void sub(vector<int> &nums, vector<int> &v, int pos)
+{
+    if (pos == v.size())
+        return;
+    // ith element is not in the subset
+    sub(nums, v, pos + 1);
+
+    // ith element in the subset
+    v.push_back(nums[pos]);
+    sub(nums, v, pos);
+    v.pop_back();
+}
 void solve()
 {
 }
