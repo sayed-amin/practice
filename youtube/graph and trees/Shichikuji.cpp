@@ -2,7 +2,7 @@
 min_spaning_tree.cpp
 02 July 2022
 Sat 08:15
-
+https://codeforces.com/contest/1245/problem/D
 */
 #include <bits/stdc++.h>
 using namespace std;
