@@ -8,6 +8,10 @@ https://www.spoj.com/problems/NAKANJ/
 using namespace std;
 #define int long long
 #define endl "\n"
+int vis[8][8];
+int level[8][8];
+int px[] = {-1, 1, -1, 1, 2, 2, -2, -2};
+int py[] = {2, 2, -2, -2, -1, 1, -1, 1};
 int getx(string s)
 {
     return s[0] - 'a';
@@ -16,10 +20,6 @@ bool isvalid(int x, int y)
 {
     return x >= 0 and y >= 0 and x < 8 and y < 8;
 }
-int vis[8][8];
-int level[8][8];
-int px[] = {-1, 1, -1, 1, 2, 2, -2, -2};
-int py[] = {2, 2, -2, -2, -1, 1, -1, 1};
 int gety(string s)
 {
     return s[1] - '1';
