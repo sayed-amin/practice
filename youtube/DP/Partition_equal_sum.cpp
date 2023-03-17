@@ -2,7 +2,7 @@
 Partition_equal_sum.cpp
 28 June 2022
 Tue 19:57
-
+https://leetcode.com/problems/partition-equal-subset-sum/
 */
 #include <bits/stdc++.h>
 using namespace std;
