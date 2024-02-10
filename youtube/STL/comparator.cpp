@@ -8,7 +8,7 @@ comparator
 using namespace std;
 #define int long long
 #define endl "\n"
-bool cmp(pair<int, int> a, pair<int, int> b)
+bool cmp1(pair<int, int> a, pair<int, int> b)
 {
     if (a.first != b.first)
         return a.first < b.first;
@@ -27,7 +27,7 @@ void solve()
     }
     // sort(v.begin(), v.end());
     // sort(v.begin(), v.end(), greater<pair<int, int>>());
-    sort(v.begin(), v.end(), cmp);
+    sort(v.begin(), v.end(), cmp1);
     for (auto &p : v)
     {
         cout << p.first << " " << p.second << endl;

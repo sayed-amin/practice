@@ -18,7 +18,9 @@ void solve()
         cin >> a[i];
     }
     sort(a, a + n);
-    int *ptr = lower_bound(a, a + n, 100);
+    int *ptr = lower_bound(a, a + n, 26);
+    int *ptr2 = upper_bound(a, a + n, 89);
+    cout << *ptr2 << endl;
     if (ptr == a + n)
         cout << "not found" << endl;
     else

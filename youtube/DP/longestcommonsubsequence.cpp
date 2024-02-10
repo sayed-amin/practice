@@ -1,8 +1,8 @@
 /*
-monk_and_father.cpp
-25 June 2022
-Sat 18:14
-ifdgsdfgfdggdfef
+longestcommonsubsequence.cpp
+03 February 2024
+Sat 15:01
+https://leetcode.com/problems/length-of-the-longest-subsequence-that-sums-to-target/description/
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -10,9 +10,6 @@ using namespace std;
 #define endl "\n"
 void solve()
 {
-    int n;
-    cin >> n;
-    cout << __builtin_popcountll(n) << endl;
 }
 int32_t main()
 {

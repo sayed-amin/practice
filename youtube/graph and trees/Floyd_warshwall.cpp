@@ -31,7 +31,7 @@ void solve()
         cin >> u >> v >> w;
         dist[u][v] = w;
     }
-    for (int k = 1; k <= n; k++)
+    for (int k = 1; k <= n; k++) // Levels Loops
     {
         for (int i = 1; i <= n; i++)
         {

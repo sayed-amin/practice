@@ -1,8 +1,8 @@
 /*
-monk_and_father.cpp
-25 June 2022
-Sat 18:14
-ifdgsdfgfdggdfef
+pair2.cpp
+06 July 2023
+Thu 02:46
+
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -10,9 +10,10 @@ using namespace std;
 #define endl "\n"
 void solve()
 {
-    int n;
-    cin >> n;
-    cout << __builtin_popcountll(n) << endl;
+    pair<int, int> p;
+    p = {1, 2};
+    // p = make_pair(1, 3);
+    cout << p.second << endl;
 }
 int32_t main()
 {

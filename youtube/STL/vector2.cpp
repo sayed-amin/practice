@@ -20,22 +20,10 @@ void print_vect(vector<int> &v)
 void solve()
 {
     vector<int> v;
-    int n;
-    cin >> n;
-    for (int i = 0; i < n; i++)
-    {
-        int x;
-        cin >> x;
-        print_vect(v);
-        v.push_back(x);
-    }
+    v.push_back(1);
+    v.push_back(2);
     cout << v[2] << endl;
     print_vect(v);
-    int A = 5;
-    vector<vector<int>> ans(A, vector<int>(A, 0));
-    vector<vector<int>> test(A, vector<int>(A, 0));
-    vector<int> arr[A];
-    vector<array<int, 5>> arr2;
 }
 int32_t main()
 {

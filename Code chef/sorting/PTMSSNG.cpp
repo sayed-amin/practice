@@ -1,8 +1,8 @@
 /*
-monk_and_father.cpp
-25 June 2022
-Sat 18:14
-ifdgsdfgfdggdfef
+PTMSSNG.cpp
+31 March 2023
+Fri 07:27
+
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -12,7 +12,15 @@ void solve()
 {
     int n;
     cin >> n;
-    cout << __builtin_popcountll(n) << endl;
+    int x = 0, y = 0;
+    for (int i = 1; i <= 4 * n - 1; i++)
+    {
+        int a, b;
+        cin >> a >> b;
+        x ^= a;
+        y ^= b;
+    }
+    cout << x << " " << y << endl;
 }
 int32_t main()
 {

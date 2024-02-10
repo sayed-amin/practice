@@ -13,6 +13,7 @@ vector<int> nse(vector<int> v)
 {
     vector<int> ans(v.size());
     stack<int> st;
+
     for (int i = 0; i < v.size(); i++)
     {
         while (!st.empty() && v[i] > v[st.top()])

@@ -1,30 +1,25 @@
-// https://www.codechef.com/submit/CM164364
+/*
+Mex.cpp
+01 April 2023
+Sat 17:52
+
+*/
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
+#define endl "\n"
 void solve()
 {
     int n, k;
     cin >> n >> k;
-    map<int, int> m;
-    for (int i = 0; i < n; i++)
+    set<int> s;
+    for (int i = 0; i < n; i +=)
     {
         int x;
         cin >> x;
-        m[x]++;
+        s.insert(x);
     }
-
-    int can_have = 0;
-    for (auto &i : m)
-    {
-        can_have += i.second - 1;
-    }
-    if (k <= can_have)
-        cout << m.size() << endl;
-    else
-        cout << m.size() - (k - can_have) << endl;
 }
-
 int32_t main()
 {
     ios_base::sync_with_stdio(0);

@@ -24,7 +24,7 @@ void solve()
         else
             high = mid;
     }
-    cout << setprecision(10) << low << " " << high << endl;
+    cout << setprecision(10) << low << " " << high << " " << floor(low) << endl;
 }
 int32_t main()
 {

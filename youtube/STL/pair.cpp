@@ -22,6 +22,7 @@ void solve()
     p_arry[0] = make_pair(0, 1);
     p_arry[1] = {1, 2};
     p_arry[2] = {2, 3};
+    sort()
     for (int i = 0; i < 3; i++)
         cout << p_arry[i].first << " " << p_arry[i].second << endl;
 }
