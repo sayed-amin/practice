@@ -12,6 +12,7 @@ const int N = 1e5 + 10;
 int dp[N];
 int fib(int n)
 {
+    //  base cases
     if (n == 0)
         return 0;
     if (n == 1)
