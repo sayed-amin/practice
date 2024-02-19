@@ -56,6 +56,7 @@ void solve()
         int v = edge.second.second;
         if (find(u) == find(v))
             continue;
+        Union(u, v);
         cost += w;
     }
 }
