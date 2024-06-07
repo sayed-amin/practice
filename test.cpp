@@ -1,26 +1,31 @@
-/*
-test.cpp
-14 February 2024
-Wed 15:39
-
-*/
 #include <bits/stdc++.h>
 using namespace std;
-#define int long long
-#define endl "\n"
-void solve()
+
+int main()
 {
-}
-int32_t main()
-{
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    int t = 1;
-    cin >> t;
-    while (t--)
+
+    int n, m;
+    cin >> n >> m;
+    vector<vector<int>> matrix(n + 1, vector<int>(m + 1, 0));
+    for (int i = 1; i <= n; i++)
     {
-        solve();
+        for (int j = 1; j <= m; j++)
+        {
+            cin >> matrix[i][j];
+        }
     }
+    for (int i = 2; i <= n; i++)
+    {
+        for (int j = 2; j <= m; j++)
+        {
+            if (matrix[i][j] != matrix[i - 1][j - 1])
+            {
+                cout << 0 << endl;
+                return 0;
+            }
+        }
+    }
+    cout << 1 << endl;
+
     return 0;
 }

@@ -26,10 +26,11 @@ void solve()
     {
         int x;
         cin >> x;
-        print_vect(v);
+        // print_vect(v);
         v.push_back(x);
     }
-    cout << v[2] << endl;
+    v.insert(v.begin(), 255);
+    cout << v[0] << endl;
     print_vect(v);
     int A = 5;
     vector<vector<int>> ans(A, vector<int>(A, 0));
