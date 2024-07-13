@@ -27,10 +27,10 @@ void bfs(int x, int y, vector<vector<int>> &level, vector<vector<int>> &vis)
         q.pop();
         int xx = p.first;
         int yy = p.second;
-
-        for (auto &pxy : coordinates)
+        ˀ¯
+            ˀ for (auto &pxy : coordinates)
         {
-            int xxx = xx + pxy.first;
+            ˀˀ int xxx = xx + pxy.first;
             int yyy = yy + pxy.second;
             if (!isvalid(xxx, yyy))
             {
