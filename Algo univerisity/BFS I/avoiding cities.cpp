@@ -19,7 +19,6 @@ void solve()
     {
         cin >> cursed[i];
     }
-
     vector<vector<int>> adj(n);
     for (int i = 0; i < m; i++)
     {
