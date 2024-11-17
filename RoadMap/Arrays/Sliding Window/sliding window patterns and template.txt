@@ -1,0 +1,193 @@
+Detailed Patterns and Examples
+Fixed-Size Sliding Window:
+Maximum sum of a subarray of size k:
+cpp
+Copy code
+int maxSumSubarray(const std::vector<int>& arr, int k) {
+    int maxSum = INT_MIN;
+    int windowSum = 0;
+
+    for (int i = 0; i < arr.size(); ++i) {
+        windowSum += arr[i];
+        if (i >= k - 1) {
+            maxSum = std::max(maxSum, windowSum);
+            windowSum -= arr[i - k + 1];
+        }
+    }
+
+    return maxSum;
+}
+Maximum or minimum element in every subarray of size k: Use a deque to maintain the indices of useful elements for each window.
+Dynamic Size Sliding Window:
+Longest substring without repeating characters:
+cpp
+Copy code
+int lengthOfLongestSubstring(const std::string& s) {
+    int n = s.size();
+    int left = 0;
+    std::unordered_set<char> charSet;
+    int maxLength = 0;
+
+    for (int right = 0; right < n; ++right) {
+        while (charSet.count(s[right])) {
+            charSet.erase(s[left]);
+            ++left;
+        }
+        charSet.insert(s[right]);
+        maxLength = std::max(maxLength, right - left + 1);
+    }
+
+    return maxLength;
+}
+Smallest subarray with a sum greater than or equal to a given value:
+cpp
+Copy code
+int minSubArrayLen(int s, std::vector<int>& nums) {
+    int n = nums.size();
+    int left = 0, sum = 0, minLength = INT_MAX;
+
+    for (int right = 0; right < n; ++right) {
+        sum += nums[right];
+        while (sum >= s) {
+            minLength = std::min(minLength, right - left + 1);
+            sum -= nums[left++];
+        }
+    }
+
+    return minLength == INT_MAX ? 0 : minLength;
+}
+Sliding Window with Two Pointers:
+Find all anagrams of a string:
+cpp
+Copy code
+std::vector<int> findAnagrams(const std::string& s, const std::string& p) {
+    std::unordered_map<char, int> pCount, sCount;
+    for (char c : p) ++pCount[c];
+
+    std::vector<int> result;
+    int left = 0, right = 0, valid = 0, pLength = p.size();
+
+    while (right < s.size()) {
+        char c = s[right];
+        if (pCount.count(c)) {
+            ++sCount[c];
+            if (sCount[c] == pCount[c]) ++valid;
+        }
+
+        while (right - left + 1 == pLength) {
+            if (valid == pCount.size()) result.push_back(left);
+
+            char d = s[left];
+            if (pCount.count(d)) {
+                if (sCount[d] == pCount[d]) --valid;
+                --sCount[d];
+            }
+            ++left;
+        }
+        ++right;
+    }
+
+    return result;
+}
+Minimum window substring:
+cpp
+Copy code
+std::string minWindow(const std::string& s, const std::string& t) {
+    if (s.empty() || t.empty()) return "";
+
+    std::unordered_map<char, int> tCount, windowCount;
+    for (char c : t) ++tCount[c];
+
+    int required = tCount.size(), formed = 0;
+    int left = 0, right = 0, minLength = INT_MAX;
+    int start = 0, end = 0;
+
+    while (right < s.size()) {
+        char c = s[right];
+        ++windowCount[c];
+
+        if (tCount.count(c) && windowCount[c] == tCount[c]) ++formed;
+
+        while (left <= right && formed == required) {
+            c = s[left];
+
+            if (right - left + 1 < minLength) {
+                minLength = right - left + 1;
+                start = left;
+                end = right;
+            }
+
+            --windowCount[c];
+            if (tCount.count(c) && windowCount[c] < tCount[c]) --formed;
+
+            ++left;
+        }
+
+        ++right;
+    }
+
+    return minLength == INT_MAX ? "" : s.substr(start, minLength);
+}
+Sliding Window with Conditional Expansion and Contraction:
+Longest subarray with sum equal to a given value:
+cpp
+Copy code
+int maxSubArrayLen(std::vector<int>& nums, int k) {
+    std::unordered_map<int, int> prefixSumMap;
+    int sum = 0, maxLength = 0;
+
+    for (int i = 0; i < nums.size(); ++i) {
+        sum += nums[i];
+        if (sum == k) {
+            maxLength = i + 1;
+        }
+        if (prefixSumMap.find(sum - k) != prefixSumMap.end()) {
+            maxLength = std::max(maxLength, i - prefixSumMap[sum - k]);
+        }
+        if (prefixSumMap.find(sum) == prefixSumMap.end()) {
+            prefixSumMap[sum] = i;
+        }
+    }
+
+    return maxLength;
+}
+Longest subarray with at most k zeros:
+cpp
+Copy code
+int longestOnes(std::vector<int>& nums, int k) {
+    int left = 0, right = 0, zeros = 0, maxLength = 0;
+
+    while (right < nums.size()) {
+        if (nums[right] == 0) ++zeros;
+
+        while (zeros > k) {
+            if (nums[left] == 0) --zeros;
+            ++left;
+        }
+
+        maxLength = std::max(maxLength, right - left + 1);
+        ++right;
+    }
+
+    return maxLength;
+}
+Longest subarray with equal number of zeros and ones:
+cpp
+Copy code
+int findMaxLength(std::vector<int>& nums) {
+    std::unordered_map<int, int> prefixSumMap;
+    int sum = 0, maxLength = 0;
+
+    prefixSumMap[0] = -1;  // To handle the case when the subarray starts from index 0
+
+    for (int i = 0; i < nums.size(); ++i) {
+        sum += (nums[i] == 1) ? 1 : -1;
+        if (prefixSumMap.find(sum) != prefixSumMap.end()) {
+            maxLength = std::max(maxLength, i - prefixSumMap[sum]);
+        } else {
+            prefixSumMap[sum] = i;
+        }
+    }
+
+    return maxLength;
+}

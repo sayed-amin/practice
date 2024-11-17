@@ -1,0 +1,5 @@
+Patterns Covered by These Problems
+Range Sum Queries: Problems that require summing up ranges of elements efficiently.
+Subarray Sum Problems: Finding subarrays that meet a certain condition (e.g., sum equals k, sum divisible by k).
+Pivot and Balanced Indexes: Problems where you need to find an index that balances the sum on both sides.
+Multiple Subarrays and Non-overlapping Subarrays: Finding multiple subarrays that meet certain criteria and ensuring they don't overlap.

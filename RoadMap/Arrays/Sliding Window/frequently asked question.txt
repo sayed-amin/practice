@@ -1,0 +1,57 @@
+Frequently Asked Sliding Window Problems
+Easy
+
+Maximum Average Subarray I
+Problem: LeetCode #643
+Description: Find the contiguous subarray of length k that has the maximum average.
+Longest Continuous Increasing Subsequence
+Problem: LeetCode #674
+Description: Find the length of the longest continuous increasing subsequence.
+Medium
+
+Longest Substring Without Repeating Characters
+Problem: LeetCode #3
+Description: Find the length of the longest substring without repeating characters.
+Minimum Size Subarray Sum
+Problem: LeetCode #209
+Description: Find the minimal length of a contiguous subarray of which the sum is greater than or equal to a given number.
+Longest Substring with At Most Two Distinct Characters
+Problem: LeetCode #159
+Description: Find the length of the longest substring that contains at most two distinct characters.
+Permutation in String
+Problem: LeetCode #567
+Description: Given two strings s1 and s2, return true if s2 contains a permutation of s1.
+Sliding Window Maximum
+Problem: LeetCode #239
+Description: Given an array nums and a sliding window size k, find the maximum value in each sliding window.
+Find All Anagrams in a String
+Problem: LeetCode #438
+Description: Find all start indices of p's anagrams in s.
+Subarray Product Less Than K
+Problem: LeetCode #713
+Description: Find the number of contiguous subarrays where the product of all the elements in the subarray is less than k.
+Longest Repeating Character Replacement
+Problem: LeetCode #424
+Description: Given a string s and an integer k, find the length of the longest substring that contains the same letter after you replace up to k characters.
+Fruit Into Baskets
+Problem: LeetCode #904
+Description: Given an array tree where tree[i] is the type of fruit, return the total amount of fruit you can collect with two baskets.
+Hard
+
+Minimum Window Substring
+Problem: LeetCode #76
+Description: Given two strings s and t, return the minimum window in s which will contain all the characters in t.
+Longest Substring with At Most K Distinct Characters
+Problem: LeetCode #340
+Description: Find the length of the longest substring that contains at most k distinct characters.
+Smallest Range Covering Elements from K Lists
+Problem: LeetCode #632
+Description: You have k lists of sorted integers, find the smallest range that includes at least one number from each of the k lists.
+Subarrays with K Different Integers
+Problem: LeetCode #992
+Description: Given an array A of positive integers, return the number of (contiguous) subarrays that have exactly K different integers.
+Summary of Patterns Covered
+Fixed-size sliding window: Problems like "Maximum Average Subarray I" where you are given a fixed window size and need to calculate something (e.g., sum, average, max) within that window.
+Dynamic sliding window: Problems like "Minimum Size Subarray Sum" where the window size changes based on the conditions and you need to adjust the window to meet these conditions.
+Character counting in sliding window: Problems like "Longest Substring Without Repeating Characters" and "Permutation in String" where you need to keep track of the frequency of characters within the window.
+Maximum/minimum within sliding window: Problems like "Sliding Window Maximum" where you need to find the maximum (or minimum) value within each window.

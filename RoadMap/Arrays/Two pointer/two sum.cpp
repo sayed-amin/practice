@@ -13,13 +13,14 @@ class Solution
 public:
     vector<int> twoSum(vector<int> &nums, int target)
     {
-        multi_map<int, int> have_num;
+        multimap<int, int> have_num;
         vector<int> ans;
         for (int i = 0; i < nums.size(); i++)
         {
             have_num.insert({nums[i], i});
         }
-        have_num.find() for (int i = 0; i < nums.size(); i++)
+        // have_num.find();
+        for (int i = 0; i < nums.size(); i++)
         {
             int sum1 = nums[i];
             int sum2 = target - sum1;
