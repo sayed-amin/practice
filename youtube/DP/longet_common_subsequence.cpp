@@ -21,6 +21,7 @@ int func(int i, int j, string &a, string &b)
     ans = max(ans, func(i - 1, j, a, b));
     ans = max(ans, func(i, j - 1, a, b));
     return ans;
+    "aacakacaa"
 }
 int longestCommonSubsequence(string text1, string text2)
 {
