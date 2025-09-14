@@ -1,38 +1,34 @@
-#include <bits/stdc++.h>
+/*
+Test.cpp
+20 June 2025 
+Fri 09:36 
+
+*/
+#include<bits/stdc++.h>
 using namespace std;
-int solve(string &s, int i, int j, vector<vector<int>> &dp)
-{
-
-    if (i == j)
-    {
-        return 1;
-    }
-    if (i > j)
-    {
-        return 0;
-    }
-    if (dp[i][j] != -1)
-    {
-        return dp[i][j];
-    }
-    int ans = 0;
-    if (s[i] == s[j])
-    {
-        ans = 2 + solve(s, i + 1, j - 1, dp);
-    }
-    else
-    {
-        ans = solve(s, i + 1, j, dp);
-        ans = max(ans, solve(s, i, j - 1, dp));
-    }
-
-    return dp[i][j] = ans;
+#define int long long
+#define endl  "\n"  
+struct ListNode{
+    int val;
+    ListNode *next;
+    ListNode(): val(0),next(nullptr);
+    ListNode(int x): val(x),next(nullptr);
+    ListNode(int x,ListNode*next) : val(x), next(next);
 }
-int main()
+void solve()
 {
-    string s;
-    cin >> s;
-    vector<vector<int>> dp(s.length(), vector<int>(s.length(),
-                                                   -1));
-    cout << solve(s, 0, s.length() - 1, dp) << endl;
+
+}
+int32_t main()
+{
+ios_base::sync_with_stdio(0);
+cin.tie(0);
+cout.tie(0);
+int testcase=1;
+cin>>testcase;
+while(testcase--)
+{
+solve();
+}
+return 0;
 }
